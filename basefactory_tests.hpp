@@ -163,6 +163,22 @@ TEST(ParseTests, InvalidInputInvalidRightOpTest)
     EXPECT_TRUE(result == nullptr);
 }
 
+TEST(ParseTests, InvalidInputPowCheckTest)
+{
+    const int LENGTH = 4;
+    char* input[LENGTH] = {
+        "./calculator.exe",
+        "2",
+        "+*",
+        "3"
+    };
+
+    BaseFactory basefactory;
+    Base* result = basefactory.parse(input, LENGTH);
+
+    EXPECT_TRUE(result == nullptr);
+}
+
 TEST(ParseTests, AddAddParseTest)
 {
     const int LENGTH = 6;
