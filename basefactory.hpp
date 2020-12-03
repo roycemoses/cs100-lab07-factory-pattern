@@ -36,10 +36,10 @@ class BaseFactory
             while (arrayIndex < length)
             {
                 // check that the operator character is 1 character
-                // if not, check that the second character is a '*' for Pow class
+                // if not, check that the operator is the Pow (**) operator 
                 // otherwise, it is an invalid input
                 if (input[arrayIndex][1] != '\0')
-                    if (input[arrayIndex][1] != '*')
+                    if (input[arrayIndex][0] != '*' || input[arrayIndex][1] != '*')
                         return nullptr;
                 
                 char op = input[arrayIndex][0]; // op is an operator

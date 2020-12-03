@@ -10,7 +10,10 @@ int main(int argc, char** argv)
 
     Base* root = basefactory.parse(argv, argc);
 
+    if (root == nullptr)
+    {
+        cout << "Invalid input." << endl;
+        return 1;
+    }
     cout << root->stringify() << " = " << root->evaluate() << endl;
-
-    delete root;
 }
