@@ -201,4 +201,23 @@ TEST(ParseTests, AddSubParseTest)
     EXPECT_EQ(result->evaluate(), 9);
 }
 
+TEST(ParseTests, AddMultParseTest)
+{
+    const int LENGTH = 6;
+    char* input[LENGTH] = {
+        "./calculator.exe",
+        "2",
+        "+",
+        "10",
+        "*",
+        "3"
+    };
+
+    BaseFactory basefactory;
+    Base* result = basefactory.parse(input, LENGTH);
+
+    EXPECT_EQ(result->stringify(), "2.000000 + 10.000000 * 3.000000");
+    EXPECT_EQ(result->evaluate(), 36);
+}
+
 #endif // BASEFACTORY_TESTS_HPP
