@@ -266,13 +266,12 @@ TEST(ParseTests, MultAddParseTest)
         "2",
         "*",
         "3",
-        "+*",
+        "+",
         "3"
     };
 
     BaseFactory basefactory;
     Base* result = basefactory.parse(input, LENGTH);
-
     EXPECT_EQ(result->stringify(), "2.000000 * 3.000000 + 3.000000");
     EXPECT_EQ(result->evaluate(), 9);
 }
@@ -285,7 +284,7 @@ TEST(ParseTests, MultSubParseTest)
         "2",
         "*",
         "3",
-        "-*",
+        "-",
         "3"
     };
 
@@ -294,6 +293,25 @@ TEST(ParseTests, MultSubParseTest)
 
     EXPECT_EQ(result->stringify(), "2.000000 * 3.000000 - 3.000000");
     EXPECT_EQ(result->evaluate(), 3);
+}
+
+TEST(ParseTests, MultMultParseTest)
+{
+    const int LENGTH = 6;
+    char* input[LENGTH] = {
+        "./calculator.exe",
+        "2",
+        "*",
+        "3",
+        "*",
+        "3"
+    };
+
+    BaseFactory basefactory;
+    Base* result = basefactory.parse(input, LENGTH);
+
+    EXPECT_EQ(result->stringify(), "2.000000 * 3.000000 * 3.000000");
+    EXPECT_EQ(result->evaluate(), 18);
 }
 
 #endif // BASEFACTORY_TESTS_HPP
