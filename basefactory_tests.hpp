@@ -320,4 +320,24 @@ TEST(ParseTests, PowMultTest)
     EXPECT_EQ(result->evaluate(), 128);
 }
 
+TEST(ParseTests, PowDivTest)
+{
+    const int LENGTH = 6;
+    char* input[LENGTH] = {
+        "./calculator.exe",
+        "2",
+        "**",
+        "6",
+        "/",
+        "2"
+    };
+
+    BaseFactory basefactory;
+    Base* result = basefactory.parse(input, LENGTH);
+
+    EXPECT_EQ(result->stringify(), "2.000000 ** 6.000000 / 2.000000");
+    EXPECT_EQ(result->evaluate(), 32);
+}
+
+
 #endif // BASEFACTORY_TESTS_HPP
