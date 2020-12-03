@@ -281,5 +281,23 @@ TEST(ParseTests, PowAddTest)
     EXPECT_EQ(result->evaluate(), 19);
 }
 
+TEST(ParseTests, PowSubTest)
+{
+    const int LENGTH = 6;
+    char* input[LENGTH] = {
+        "./calculator.exe",
+        "2",
+        "**",
+        "5",
+        "-",
+        "31"
+    };
+
+    BaseFactory basefactory;
+    Base* result = basefactory.parse(input, LENGTH);
+
+    EXPECT_EQ(result->stringify(), "2.000000 ** 5.000000 - 31.000000");
+    EXPECT_EQ(result->evaluate(), 1);
+}
 
 #endif // BASEFACTORY_TESTS_HPP
