@@ -719,4 +719,16 @@ TEST(ParseTests, MultPowParseTest)
     EXPECT_EQ(result->evaluate(), 256);
 }
 
+TEST(ParseTests, InputLengthIsOne)
+{
+    const int LENGTH = 1;
+    char* input[LENGTH] = {
+        "./calculator.exe"
+    };
+    
+    BaseFactory basefactory;
+    Base* result = basefactory.parse(input, LENGTH);    
+    EXPECT_TRUE(result == nullptr);
+}
+
 #endif // BASEFACTORY_TESTS_HPP
