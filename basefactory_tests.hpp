@@ -131,6 +131,20 @@ TEST(ParseTests, InvalidInputInvalidOperatorTest)
     EXPECT_TRUE(result == nullptr);
 }
 
+TEST(ParseTests, InvalidInputInvalidLeftOpTest)
+{
+    const int LENGTH = 4;
+    char* input[LENGTH] = {
+        "./calculator.exe",
+        "a",
+        "*",
+        "2"
+    };
 
+    BaseFactory basefactory;
+    Base* result = basefactory.parse(input, LENGTH);
+
+    EXPECT_TRUE(result == nullptr);
+}
 
 #endif // BASEFACTORY_TESTS_HPP
