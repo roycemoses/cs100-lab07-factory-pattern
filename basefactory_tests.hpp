@@ -339,5 +339,23 @@ TEST(ParseTests, PowDivTest)
     EXPECT_EQ(result->evaluate(), 32);
 }
 
+TEST(ParseTests, PowPowTest)
+{
+    const int LENGTH = 6;
+    char* input[LENGTH] = {
+        "./calculator.exe",
+        "2",
+        "**",
+        "2",
+        "**",
+        "2"
+    };
+
+    BaseFactory basefactory;
+    Base* result = basefactory.parse(input, LENGTH);
+
+    EXPECT_EQ(result->stringify(), "2.000000 ** 2.000000 ** 2.000000");
+    EXPECT_EQ(result->evaluate(), 16);
+}
 
 #endif // BASEFACTORY_TESTS_HPP
