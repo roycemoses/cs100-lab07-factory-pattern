@@ -329,7 +329,7 @@ TEST(ParseTests, PowPowTest)
         "./calculator.exe",
         "2",
         "**",
-        "6",
+        "2",
         "**",
         "2"
     };
