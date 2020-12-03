@@ -193,5 +193,23 @@ TEST(ParseTests, DivDivTest)
     EXPECT_EQ(result->evaluate(), 1);
 }
 
+TEST(ParseTests, DivPowTest)
+{
+    const int LENGTH = 6;
+    char* input[LENGTH] = {
+        "./calculator.exe",
+        "100",
+        "/",
+        "5",
+        "**",
+        "3"
+    };
+
+    BaseFactory basefactory;
+    Base* result = basefactory.parse(input, LENGTH);
+
+    EXPECT_EQ(result->stringify(), "100.000000 / 5.000000 ** 3.000000");
+    EXPECT_EQ(result->evaluate(), 8000);
+}
 
 #endif // BASEFACTORY_TESTS_HPP
