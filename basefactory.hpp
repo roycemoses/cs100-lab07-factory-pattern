@@ -18,6 +18,9 @@ class BaseFactory
         {
             Base* result = nullptr;
 
+            if (length == 1)
+                return nullptr;
+
             // check if the leftOp is a number (cstring of digits)
             char temp = input[1][0];
             int i = 0;
