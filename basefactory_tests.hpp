@@ -163,4 +163,23 @@ TEST(ParseTests, InvalidInputInvalidRightOpTest)
     EXPECT_TRUE(result == nullptr);
 }
 
+TEST(ParseTests, AddAddParseTest)
+{
+    const int LENGTH = 6;
+    char* input[LENGTH] = {
+        "./calculator.exe",
+        "2",
+        "+",
+        "2",
+        "+",
+        "4"
+    };
+
+    BaseFactory basefactory;
+    Base* result = basefactory.parse(input, LENGTH);
+
+    EXPECT_EQ(result->stringify(), "2.000000 + 2.000000 + 4.000000");
+    EXPECT_EQ(result->evaluate(), 8);
+}
+
 #endif // BASEFACTORY_TESTS_HPP
